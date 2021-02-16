@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Counter from '../Counter';
 
-class CounterController extends Component {
+class CounterController extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      step: props.step
+    this.state ={
+      step : 1,
     }
   }
 
-  handleChange = ({target}) => {
-    const {changeStep} = this.props;
-    changeStep(Number(target.value));
+  changeStep = ({target: {value}}) => {
+    this.setState({step: Number(value)})
   }
   
   render() {
-    const {step} = this.props;
+    const {step} = this.state;
     return (
-      <div>
-        <input type='number' placeholder='step' value={step}  onChange={this.handleChange}/>
+      <div className='CounterController'>
+        <input type='number' placeholder='step' value={step}  onChange={this.changeStep}/>
+        <Counter step={step} />
       </div>
     );
   }
