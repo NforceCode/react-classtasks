@@ -32,6 +32,9 @@ class AutoClicker extends Component {
 
   componentDidMount () {
     this.toggleAutoClicker();
+    setTimeout(() => {
+      this.toggleAutoClicker();
+    }, 31000);
   }
   componentDidUpdate () {
     const {step} = this.props;
