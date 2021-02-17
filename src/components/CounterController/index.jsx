@@ -11,7 +11,7 @@ class CounterController extends React.Component {
       step: 1,
       counter: 0,
       isIncrementing: true,
-      isControlsHidden: false,
+      isControlsHidden: true,
     };
   }
 
@@ -49,16 +49,10 @@ class CounterController extends React.Component {
           className={styles.controlsBtn}
           children={<img className={styles.img} src={cog} alt='settings'/>}
         />
-        <label className={isControlsHidden ? styles.hidden : ''}>Enter step:  {<input
-          
-          type='number'
-          placeholder='step'
-          value={step}
-          onChange={this.changeStep}
-        />}</label>
         <Counter
           className={isControlsHidden ? styles.hidden : ''}
           step={step}
+          changeStep = {this.changeStep}
           counter={counter}
           changeMode={this.changeMode}
           changeValue={this.changeValue}
