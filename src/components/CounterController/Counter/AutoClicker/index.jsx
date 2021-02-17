@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
 
 class AutoClicker extends Component {
   constructor(props) {
@@ -57,11 +58,12 @@ class AutoClicker extends Component {
   } 
 
   render() {
+    const {className} = this.props
     const {isTurnedOn, clickIntervalMs, turnedOnForMs} = this.state;
     return (
       <div>
-        <button onClick={this.toggleAutoClicker}>{isTurnedOn? `Turn off AutoClick` : `Turn on AutoClick`}</button>
-        <input type="number" value={clickIntervalMs} onChange={this.handleChange}/>
+        <button className={cx(className)} onClick={this.toggleAutoClicker}>{isTurnedOn? `Turn off AutoClick` : `Turn on AutoClick`}</button>
+        <input className={cx(className)} type="number" value={clickIntervalMs} onChange={this.handleChange}/>
         <p style={{margin: 0}}>{isTurnedOn? `Autoclicker is working for ${turnedOnForMs / 1000} seconds` : `Autoclicker isn't working right now`}</p>
       </div>
     );

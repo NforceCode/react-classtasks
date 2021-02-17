@@ -1,0 +1,17 @@
+.componentContainer {
+  /* border-radius: 10px; */
+  border: 1px solid black;
+}
+
+.textContainer {
+  padding: 5px;
+  margin: 0;
+
+}
+
+.spanStyleIncrementing {
+  color: green;
+}
+.spanStyleDecrementing {
+  color: red;
+}

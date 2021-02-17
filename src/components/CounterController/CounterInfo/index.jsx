@@ -1,25 +1,19 @@
 import React from 'react';
-
-const spanStyleIncrementing = {
-  color: 'green',
-};
-const spanStyleDecrementing = {
-  color: 'red',
-};
+import styles from './CounterInfo.module.css'
 
 const CounterInfo = (props) => {
   const { isIncrementing, step, counter } =props;
   return (
-    <div>
-      <div>Current number: {counter}</div>
-      <div>
+    <div className={styles.componentContainer}>
+      <p className={styles.textContainer}>Current number: {counter}</p>
+      <p className={styles.textContainer}>
         Current action:{' '}
         <span
-          style={isIncrementing ? spanStyleIncrementing : spanStyleDecrementing}
+          className={isIncrementing ? styles.spanStyleIncrementing : styles.spanStyleDecrementing}
         >
           {isIncrementing ? `Adding ${step}` : `Subtracting ${step}`}
         </span>
-      </div>
+      </p>
     </div>
   );
 };
