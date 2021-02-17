@@ -6,6 +6,7 @@ class AutoClicker extends Component {
     this.state = {
       isTurnedOn : false,
       clickIntervalMs : 1000,
+      turnedOnForMs : 0,
     }
     this.intervalId = null;
   }
@@ -16,13 +17,22 @@ class AutoClicker extends Component {
 
   toggleAutoClicker = () => {
     const {isTurnedOn} = this.state;
-    this.setState({isTurnedOn : !isTurnedOn});
+    this.setState((prevState, props)=> {
+      let newTurndeOnMs;
+      isTurnedOn? newTurndeOnMs = 0: newTurndeOnMs = Number(prevState.turnedOnForMs);
+      return {isTurnedOn : !prevState.isTurnedOn, turnedOnForMs: newTurndeOnMs}
+    });
   }
 
   startClicking = (value, interval) => {
     const {changeValue} = this.props;
     if(!this.intervalId){
-      this.intervalId= setInterval(()=>{changeValue(value)},interval);
+      this.intervalId= setInterval(()=>{
+        changeValue(value);
+        this.setState((prevState, props) => {
+          return {turnedOnForMs: Number(prevState.turnedOnForMs) + Number(interval)};
+        })
+      },interval);
     }
   }
   stopClicking = () => {
@@ -47,11 +57,12 @@ class AutoClicker extends Component {
   } 
 
   render() {
-    const {isTurnedOn, clickIntervalMs} = this.state;
+    const {isTurnedOn, clickIntervalMs, turnedOnForMs} = this.state;
     return (
       <div>
         <button onClick={this.toggleAutoClicker}>{isTurnedOn? `Turn off AutoClick` : `Turn on AutoClick`}</button>
         <input type="number" value={clickIntervalMs} onChange={this.handleChange}/>
+        <p style={{margin: 0}}>{isTurnedOn? `Autoclicker is working for ${turnedOnForMs / 1000} seconds` : `Autoclicker isn't working right now`}</p>
       </div>
     );
   }
