@@ -1,5 +1,21 @@
+.counterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .interactiveElem {
   display: inline-block;
   padding: 5px 10px;
-  margin: 0 5px 10px;
+  margin: 5px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.5s ease-in-out;
+}
+
+.interactiveElem:hover {
+  border-color: black;
+  color: black;
+  background-color: aqua;
 }

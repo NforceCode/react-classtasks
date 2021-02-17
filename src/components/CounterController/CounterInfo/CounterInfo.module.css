@@ -1,6 +1,5 @@
 .componentContainer {
-  /* border-radius: 10px; */
-  border: 1px solid black;
+  
 }
 
 .textContainer {
@@ -10,8 +9,8 @@
 }
 
 .spanStyleIncrementing {
-  color: green;
+  color: lime;
 }
 .spanStyleDecrementing {
-  color: red;
+  color:black;
 }
