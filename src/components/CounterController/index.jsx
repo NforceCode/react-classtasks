@@ -1,7 +1,7 @@
 import React from 'react';
 import Counter from './Counter';
 import CounterInfo from './CounterInfo';
-import styles from './CounterController.module.css';
+import styles from './CounterController.module.scss';
 import cog from './cog-outline.svg';
 
 class CounterController extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CounterInfo.module.css'
+import styles from './CounterInfo.module.scss'
 
 const CounterInfo = (props) => {
   const { isIncrementing, step, counter } =props;

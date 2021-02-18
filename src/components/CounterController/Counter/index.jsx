@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AutoClicker from './AutoClicker';
-import styles from './Counter.module.css';
+import styles from './Counter.module.scss';
 import cx from 'classnames';
 
 
