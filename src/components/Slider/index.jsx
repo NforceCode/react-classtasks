@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SlideContainer from './SlideContainer';
 import SlideDescription from './SlideDescription';
 import styles from './Slider.module.css';
+import cx from 'classnames';
 
 class Slider extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Slider extends Component {
     const images = data.map((elem) => ({ src: elem.src, alt: elem.heading}));
     const textData = data.map((elem) => ({ heading: elem.heading, text: elem.text}));
     return (
-      <section className={styles.slider}>
+      <section className={cx(styles.slider)}>
         <SlideContainer imageData={images} slideId={slideId} changeSlide={this.changeSlide} />
         <SlideDescription textData={textData} slideId={slideId}/>
       </section>
