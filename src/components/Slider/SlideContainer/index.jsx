@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './SlideContainer.module.css';
+import styles from './SlideContainer.module.scss';
 import cx from 'classnames';
 import SliderControls from '../SliderControls';
 

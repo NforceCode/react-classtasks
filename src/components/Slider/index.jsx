@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SlideContainer from './SlideContainer';
 import SlideDescription from './SlideDescription';
-import styles from './Slider.module.css';
+import styles from './Slider.module.scss';
 import cx from 'classnames';
 
 class Slider extends Component {
