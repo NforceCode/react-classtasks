@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './SlideContainer.module.css';
 import cx from 'classnames';
+import SliderControls from '../SliderControls';
 
 class SlideContainer extends Component {  
   constructor(props) {
@@ -27,6 +28,8 @@ class SlideContainer extends Component {
   render() {
     const {imageData,changeSlide, slideId} = this.props;
     return (
+      <>
+        <SliderControls changeSlide={changeSlide}/>
       <div className={styles.slideContainer}>
         <button className={cx(styles.leftBtn, styles.btn)} onClick={()=> {changeSlide('-')}}>{`<`}</button>
         <div className={styles.imageWrapper}>
@@ -34,6 +37,7 @@ class SlideContainer extends Component {
         </div>
         <button className={cx(styles.rightBtn, styles.btn)} onClick={()=> {changeSlide('+')}}>{`>`}</button>
       </div>
+      </>
     );
   }
 }
