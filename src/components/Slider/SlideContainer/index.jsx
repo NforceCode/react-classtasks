@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './SlideContainer.module.scss';
 import cx from 'classnames';
 import SliderControls from '../SliderControls';
+import PropTypes from 'prop-types';
 
 class SlideContainer extends Component {  
   constructor(props) {
@@ -42,7 +43,15 @@ class SlideContainer extends Component {
   }
 }
 
-// document.onfullscreenchange = SlideContainer.
-// })
+const imageDataPropType = PropTypes.shape({
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+})
+
+SlideContainer.propTypes = {
+  imageData: PropTypes.arrayOf(imageDataPropType).isRequired,
+  changeSlide: PropTypes.func,
+  slideId: PropTypes.number.isRequired
+}
 
 export default SlideContainer;

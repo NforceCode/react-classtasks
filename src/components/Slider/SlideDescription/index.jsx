@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 class SlideDescription extends Component {
   render() {
@@ -12,6 +13,16 @@ class SlideDescription extends Component {
       </div>
     );
   }
+}
+
+const textDataPropType = PropTypes.shape({
+  heading: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+})
+
+SlideDescription.propTypes ={
+  textData : PropTypes.arrayOf(textDataPropType),
+  slideId: PropTypes.number
 }
 
 export default SlideDescription;

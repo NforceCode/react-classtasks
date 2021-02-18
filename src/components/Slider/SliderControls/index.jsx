@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SliderControls extends Component {
   constructor(props) {
@@ -43,6 +44,10 @@ class SliderControls extends Component {
       </div>
     );
   }
+}
+
+SliderControls.propTypes = {
+  changeSlide: PropTypes.func
 }
 
 export default SliderControls;
