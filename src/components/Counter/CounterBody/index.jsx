@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import AutoClicker from './AutoClicker';
-import styles from './Counter.module.scss';
+import AutoClicker from '../AutoClicker';
+import styles from './CounterBody.module.scss';
 import cx from 'classnames';
 
 
-class Counter extends Component {
+class CounterBody extends Component {
 
   render() {
     const { step , changeMode, changeValue, className, changeStep} = this.props;
@@ -32,4 +32,4 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+export default CounterBody;

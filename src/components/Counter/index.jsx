@@ -1,10 +1,10 @@
 import React from 'react';
-import Counter from './Counter';
+import CounterBody from './CounterBody';
 import CounterInfo from './CounterInfo';
-import styles from './CounterController.module.scss';
+import styles from './Counter.module.scss';
 import cog from './cog-outline.svg';
 
-class CounterController extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,7 +49,7 @@ class CounterController extends React.Component {
           className={styles.controlsBtn}
           children={<img className={styles.img} src={cog} alt='settings'/>}
         />
-        <Counter
+        <CounterBody
           className={isControlsHidden ? styles.hidden : ''}
           step={step}
           changeStep = {this.changeStep}
@@ -67,4 +67,4 @@ class CounterController extends React.Component {
   }
 }
 
-export default CounterController;
+export default Counter;

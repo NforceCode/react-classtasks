@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CounterController from './components/CounterController';
+import Counter from './components/Counter';
 import Slider from './components/Slider';
 
 
@@ -25,7 +25,8 @@ const data = [
 const App = () => {
   return (
     <div className='App'>
-      <Slider data={data}/>
+      {/* <Slider data={data}/> */}
+      <Counter />
     </div>
   );
 }
