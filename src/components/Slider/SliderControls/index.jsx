@@ -15,7 +15,7 @@ class SliderControls extends Component {
 
   changeValue = ({target: {value}}) => {
     this.setState((state, props) => {
-      return {autoSliderSpeedS: value * 1000};
+      return {autoSliderSpeedS: value};
     })
   }
 
