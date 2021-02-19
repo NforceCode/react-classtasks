@@ -21,8 +21,8 @@ const textDataPropType = PropTypes.shape({
 })
 
 SlideDescription.propTypes ={
-  textData : PropTypes.arrayOf(textDataPropType),
-  slideId: PropTypes.number
+  textData : PropTypes.arrayOf(textDataPropType).isRequired,
+  slideId: PropTypes.number.isRequired
 }
 
 export default SlideDescription;
