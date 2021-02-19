@@ -43,7 +43,7 @@ class Counter extends React.Component {
   render() {
     const { step, counter, isIncrementing, isControlsHidden } = this.state;
     return (
-      <div className={styles.counterController}>
+      <div className={styles.counter}>
         <div
           onClick={this.toggleContorlsVisibility}
           className={styles.controlsBtn}
