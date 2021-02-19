@@ -3,6 +3,7 @@ import SlideContainer from './SlideContainer';
 import SlideDescription from './SlideDescription';
 import styles from './Slider.module.scss';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 class Slider extends Component {
   constructor(props) {
@@ -30,6 +31,17 @@ class Slider extends Component {
       </section>
     );
   }
+}
+
+const dataEntry = PropTypes.shape({  
+  src: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+})
+
+
+Slider.propTypes = {
+  data : PropTypes.arrayOf(dataEntry).isRequired,
 }
 
 export default Slider;
