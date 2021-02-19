@@ -12,39 +12,43 @@ class SlideContainer extends Component {
     };
   }
 
-  handleKeyPress = (event) => {
-    console.log(event);
+  handleFullScreenChangeEvents = () => {
+    const { isImageFullscreen } = this.state;
+
+    if(!isImageFullscreen && !document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+      document.addEventListener('fullscreenchange', this.exitFullScreenHandler);
+      document.addEventListener('webkitfullscreenchange', this.exitFullScreenHandler);
+      document.addEventListener('mozfullscreenchange', this.exitFullScreenHandler);
+      document.addEventListener('MSFullscreenChange', this.exitFullScreenHandler);
+    } else {
+      document.removeEventListener('fullscreenchange', this.exitFullScreenHandler);
+      document.removeEventListener('webkitfullscreenchange', this.exitFullScreenHandler);
+      document.removeEventListener('mozfullscreenchange', this.exitFullScreenHandler);
+      document.removeEventListener('MSFullscreenChange', this.exitFullScreenHandler);
+    }
   };
 
-  exitFullScreenHandler = (e) => {
-    // console.log(!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement);
-  //   if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
-  //     document.exitFullscreen();
-  //     document.removeEventListener('fullscreenchange', this.exitFullScreenHandler);
-  //     document.removeEventListener('webkitfullscreenchange', this.exitFullScreenHandler);
-  //     document.removeEventListener('mozfullscreenchange', this.exitFullScreenHandler);
-  //     document.removeEventListener('MSFullscreenChange', this.exitFullScreenHandler);
-  //     this.setState((state, props) => {
-  //       return { isImageFullscreen: !state.isImageFullscreen };
-  //     });
-  // }
+  exitFullScreenHandler = () => {
+    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+      this.handleFullScreenChangeEvents();
+
+      this.setState((state, props) => {
+        return { isImageFullscreen: false };
+      });
+    }
   }
 
   toggleFullScreen = () => {
-    // const { isImageFullscreen } = this.state;
-    // if (!isImageFullscreen && !document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
-    //   document.querySelector(`.${styles.image}`).requestFullscreen();
-    //   document.addEventListener('fullscreenchange', this.exitFullScreenHandler);
-    //   document.addEventListener('webkitfullscreenchange', this.exitFullScreenHandler);
-    //   document.addEventListener('mozfullscreenchange', this.exitFullScreenHandler);
-    //   document.addEventListener('MSFullscreenChange', this.exitFullScreenHandler);
-    //   this.setState((state, props) => {
-    //     return { isImageFullscreen: !state.isImageFullscreen };
-    //   });
-    // } else {
-    //   this.exitFullScreenHandler();
-    // }
-
+    const { isImageFullscreen } = this.state;
+    this.setState((state, props) => {
+      return { isImageFullscreen: !state.isImageFullscreen };
+    });
+    if (!isImageFullscreen && !document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+      document.querySelector(`.${styles.image}`).requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+    this.handleFullScreenChangeEvents();
 
   };
 
