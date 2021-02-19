@@ -1,0 +1,47 @@
+@import './../../../common/styles/templates';
+
+.controlsContainer {
+  @extend %flex-column-centered;
+  width: inherit;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: block;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 10px;
+  // background-color: wheat;
+
+  &.start {
+    background-color: rgb(25, 255, 25);
+
+    &:hover {
+      background-color: rgb(140, 255, 100);
+    }
+  }
+  
+  &.stop {
+    background-color: crimson;
+    color: white;
+  
+    &:hover {
+      background-color: rgb(240, 10, 10);
+  
+    }
+  }
+
+  // &:hover {
+  //   background-color: wheat;
+  // }
+}
+
+.input {
+  width: 50px;
+  text-align: center;
+  border: none;
+  outline: none;
+}

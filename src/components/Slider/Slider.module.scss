@@ -1,13 +1,12 @@
+@import './../../common/styles/templates';
+
 .slider {
+  @extend %flex-column-centered;
   max-width: 800px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
   border: 1px solid black;
   border-radius: 20px;
