@@ -1,46 +1,60 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from './SliderControls.module.scss';
+import cx from 'classnames';
 
 class SliderControls extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isAutoSliderTurnedOn: false,
-      autoSliderSpeedMs: 5000,
+      autoSliderSpeedS: 1,
     }
-    this.intervalId = null
+    this.timeoutId = null
   }
 
   changeValue = ({target: {value}}) => {
-    // const {autoSliderSpeedMs} = this.state;
-
     this.setState((state, props) => {
-      return {autoSliderSpeedMs: value * 1000};
+      return {autoSliderSpeedS: value * 1000};
     })
+  }
+
+  tick() {
+    const {changeSlide} = this.props
+    const {autoSliderSpeedS} = this.state;
+
+    changeSlide('+');
+    this.timeoutId = setTimeout( ()=>{ this.tick()} , autoSliderSpeedS * 1000);
   }
 
   toggleAutoSlide = () => {
-    const {changeSlide} = this.props
-    const {autoSliderSpeedMs} = this.state;
+    const {autoSliderSpeedS} = this.state;
     this.setState((state, props) => {
       return {isAutoSliderTurnedOn: !state.isAutoSliderTurnedOn};
     })
-    if(this.intervalId) {
-      clearInterval(this.intervalId);
-      this.intervalId = null
+    if(this.timeoutId) {
+      clearTimeout(this.timeoutId);
+      this.timeoutId = null
       return
     }
-    this.intervalId = setInterval(()=>{
-      changeSlide('+')
-    }, autoSliderSpeedMs)
+    this.timeoutId = setTimeout(()=>{
+      this.tick();
+    }, autoSliderSpeedS * 1000)
   }
 
+  
+  
   render() {
-    const {isAutoSliderTurnedOn, autoSliderSpeedMs} = this.state;
+    const {isAutoSliderTurnedOn, autoSliderSpeedS} = this.state;
+    const btnStyles = {
+     [styles.btn] : true,
+     [styles.start] : !isAutoSliderTurnedOn,
+     [styles.stop] : isAutoSliderTurnedOn,
+   }
     return (
-      <div>
-        <button onClick={this.toggleAutoSlide}>{isAutoSliderTurnedOn? `Turn AutoSlider off`:`Turn AutoSlider on`}</button>
-        <input type="number" placeholder='interval of autoslide' value={autoSliderSpeedMs/1000} onChange={this.changeValue}/>
+      <div className={styles.controlsContainer}>
+        <button className={cx(btnStyles)} onClick={this.toggleAutoSlide}>{isAutoSliderTurnedOn? `Turn AutoSlider off`:`Turn AutoSlider on`}</button>
+        <label>AutoSlider interval : <input className={styles.input} type="number" placeholder='interval of autoslide' value={autoSliderSpeedS} onChange={this.changeValue}/> s</label>
       </div>
     );
   }
