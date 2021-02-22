@@ -6,42 +6,50 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 class Slider extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      slideId : 0,
-    }
+      slideId: 0,
+    };
   }
 
-  changeSlide = (operator) => {
-    const {data} =this.props;
-    const {slideId} = this.state; 
-    operator==='+'? this.setState({slideId: (slideId +1) % data.length}) : this.setState({slideId: (slideId - 1 + data.length) % data.length})
-  }
-  
-  render() {
-    const {data} = this.props;
-    const {slideId} = this.state;
-    const images = data.map((elem) => ({ src: elem.src, alt: elem.heading}));
-    const textData = data.map((elem) => ({ heading: elem.heading, text: elem.text}));
+  changeSlide = operator => {
+    const { data } = this.props;
+    const { slideId } = this.state;
+    operator === '+'
+      ? this.setState({ slideId: (slideId + 1) % data.length })
+      : this.setState({ slideId: (slideId - 1 + data.length) % data.length });
+  };
+
+  render () {
+    const { data } = this.props;
+    const { slideId } = this.state;
+    const images = data.map(elem => ({ src: elem.src, alt: elem.heading }));
+    const textData = data.map(elem => ({
+      heading: elem.heading,
+      text: elem.text,
+    }));
     return (
       <section className={cx(styles.slider)}>
-        <SlideContainer imageData={images} slideId={slideId} changeSlide={this.changeSlide} />
-        <SlideDescription textData={textData} slideId={slideId}/>
+        <SlideContainer
+          imageData={images}
+          slideId={slideId}
+          changeSlide={this.changeSlide}
+        />
+        <SlideDescription textData={textData} slideId={slideId} />
       </section>
     );
   }
 }
 
-const dataEntry = PropTypes.shape({  
+const dataEntry = PropTypes.shape({
   src: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
-})
-
+  text: PropTypes.string.isRequired,
+});
 
 Slider.propTypes = {
-  data : PropTypes.arrayOf(dataEntry).isRequired,
-}
+  data: PropTypes.arrayOf(dataEntry).isRequired,
+};
 
 export default Slider;

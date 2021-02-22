@@ -5,7 +5,7 @@ import styles from './Counter.module.scss';
 import cog from './cog-outline.svg';
 
 class Counter extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       step: 1,
@@ -21,7 +21,7 @@ class Counter extends React.Component {
     });
   };
 
-  changeValue = (number) => {
+  changeValue = number => {
     const { counter, isIncrementing } = this.state;
     let newCounter;
     isIncrementing
@@ -40,19 +40,19 @@ class Counter extends React.Component {
     this.setState({ step: Number(value) });
   };
 
-  render() {
+  render () {
     const { step, counter, isIncrementing, isControlsHidden } = this.state;
     return (
       <div className={styles.counter}>
         <div
           onClick={this.toggleContorlsVisibility}
           className={styles.controlsBtn}
-          children={<img className={styles.img} src={cog} alt='settings'/>}
+          children={<img className={styles.img} src={cog} alt='settings' />}
         />
         <CounterBody
           className={isControlsHidden ? styles.hidden : ''}
           step={step}
-          changeStep = {this.changeStep}
+          changeStep={this.changeStep}
           counter={counter}
           changeMode={this.changeMode}
           changeValue={this.changeValue}

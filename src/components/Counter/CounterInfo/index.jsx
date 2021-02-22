@@ -1,15 +1,19 @@
 import React from 'react';
-import styles from './CounterInfo.module.scss'
+import styles from './CounterInfo.module.scss';
 
-const CounterInfo = (props) => {
-  const { isIncrementing, step, counter } =props;
+const CounterInfo = props => {
+  const { isIncrementing, step, counter } = props;
   return (
     <div className={styles.componentContainer}>
       <p className={styles.textContainer}>Current number: {counter}</p>
       <p className={styles.textContainer}>
         Current action:{' '}
         <span
-          className={isIncrementing ? styles.spanStyleIncrementing : styles.spanStyleDecrementing}
+          className={
+            isIncrementing
+              ? styles.spanStyleIncrementing
+              : styles.spanStyleDecrementing
+          }
         >
           {isIncrementing ? `Adding ${step}` : `Subtracting ${step}`}
         </span>

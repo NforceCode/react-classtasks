@@ -3,8 +3,8 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 class SlideDescription extends Component {
-  render() {
-    const {textData, slideId} = this.props;
+  render () {
+    const { textData, slideId } = this.props;
 
     return (
       <div>
@@ -18,11 +18,11 @@ class SlideDescription extends Component {
 const textDataPropType = PropTypes.shape({
   heading: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-})
+});
 
-SlideDescription.propTypes ={
-  textData : PropTypes.arrayOf(textDataPropType).isRequired,
-  slideId: PropTypes.number.isRequired
-}
+SlideDescription.propTypes = {
+  textData: PropTypes.arrayOf(textDataPropType).isRequired,
+  slideId: PropTypes.number.isRequired,
+};
 
 export default SlideDescription;
