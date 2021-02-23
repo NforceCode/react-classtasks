@@ -4,6 +4,12 @@ import Counter from './components/Counter';
 import FlexContainer from './components/FlexContainer';
 import Slider from './components/Slider';
 import WindowSizes from './components/WindowSizes';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const data = [
   {
@@ -29,9 +35,42 @@ const data = [
 const App = () => {
   return (
     <div className='App'>
+      <Router> 
+
+        <nav>
+    
+          <ul>
+            <li>
+              <Link to='/slider' >Slider</Link>
+            </li>
+            <li>
+              <Link to='/counter'>Counter</Link>
+            </li>
+            <li>
+              <Link to='/windowsizes' >WindowSizes</Link>
+            </li>
+          </ul>
+
+        </nav>
+
+        <Switch>
+
+          <Route path='/slider'>
+            <Slider data={data}/>
+          </Route>
+
+          <Route path='/counter'>
+            <Counter/>
+          </Route>
+
+          <Route path='/windowsizes'>
+            <WindowSizes/>
+          </Route>
+        </Switch>
+      </Router>
       {/* <Slider data={data} /> */}
       {/* <Counter /> */}
-      <WindowSizes />
+      {/* <WindowSizes /> */}
     </div>
   );
 };
