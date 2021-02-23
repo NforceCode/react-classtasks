@@ -3,6 +3,7 @@ import './App.css';
 import Counter from './components/Counter';
 import FlexContainer from './components/FlexContainer';
 import Slider from './components/Slider';
+import WindowSizes from './components/WindowSizes';
 
 const data = [
   {
@@ -28,8 +29,9 @@ const data = [
 const App = () => {
   return (
     <div className='App'>
-      <Slider data={data} />
+      {/* <Slider data={data} /> */}
       {/* <Counter /> */}
+      <WindowSizes />
     </div>
   );
 };
