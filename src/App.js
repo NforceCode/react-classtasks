@@ -4,12 +4,9 @@ import Counter from './components/Counter';
 import FlexContainer from './components/FlexContainer';
 import Slider from './components/Slider';
 import WindowSizes from './components/WindowSizes';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import LoaderPage from './pages/Loader';
+import UserLoader from './components/UserLoader';
 
 const data = [
   {
@@ -35,37 +32,50 @@ const data = [
 const App = () => {
   return (
     <div className='App'>
-      <Router> 
-
+      <Router>
         <nav>
-    
           <ul>
             <li>
-              <Link to='/slider' >Slider</Link>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/slider'>Slider</Link>
             </li>
             <li>
               <Link to='/counter'>Counter</Link>
             </li>
             <li>
-              <Link to='/windowsizes' >WindowSizes</Link>
+              <Link to='/windowsizes'>WindowSizes</Link>
+            </li>
+            <li>
+              <Link to='/userloader'>User Loader</Link>
+            </li>
+            <li>
+              <Link to='/loader'>loader</Link>
             </li>
           </ul>
-
         </nav>
 
         <Switch>
+          <Route exact path='/'>
+            <div>HOME</div>
+          </Route>
 
           <Route path='/slider'>
-            <Slider data={data}/>
+            <Slider data={data} />
           </Route>
 
           <Route path='/counter'>
-            <Counter/>
+            <Counter />
           </Route>
 
           <Route path='/windowsizes'>
-            <WindowSizes/>
+            <WindowSizes />
           </Route>
+
+          <Route path='/loader' component={LoaderPage} />
+          <Route path='/userloader' component={UserLoader} />
+          <Route path='*' component={NotFound} />
         </Switch>
       </Router>
       {/* <Slider data={data} /> */}
@@ -74,5 +84,7 @@ const App = () => {
     </div>
   );
 };
+
+const NotFound = () => <div>Error 404</div>;
 
 export default App;
