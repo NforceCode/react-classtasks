@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { UserContext } from '../../contexts';
+import { UserContext } from '../../../contexts';
 
 class ChatSidebar extends Component {
   render() {
@@ -9,7 +9,7 @@ class ChatSidebar extends Component {
           return (
             <div>
               <h2>{`${user.firstName} ${user.lastName}`}</h2>
-              <img src={user.imageSrc} alt=""/>
+              <img src={user.imageSrcnp} alt=""/>
             </div>
           )
         }}

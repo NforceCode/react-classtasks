@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ChatSidebar from '../components/ChatSidebar';
-import ChatHeader from './../components/ChatHeader';
+import ChatSidebar from '../components/Chat/ChatSidebar';
+import ChatHeader from './../components/Chat/ChatHeader';
 
 class PseudoChat extends Component {
   render() {
