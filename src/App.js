@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PseudoChat from './pages/PseudoChat';
 import {UserContext} from './contexts';
+import Home from './pages/Home';
 class App extends Component {
   constructor (props) {
     super(props);
@@ -19,7 +20,7 @@ class App extends Component {
     const {user} = this.state;
     return (
       <UserContext.Provider value={user}>
-        <PseudoChat />
+        <Home />
       </UserContext.Provider>
     );
   }
