@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {format, addMilliseconds} from 'date-fns';
+
 
 const StopWatch = () => {
   const [time, setTime] = useState(new Date(0,0,0,0,0,0,0));
   const [isRunning, setIsRunning] = useState(false);
 
   const toggleStopWatch = () => setIsRunning(!isRunning);
+
+
 
   useEffect(() => {
     if (isRunning) {
