@@ -26,5 +26,5 @@ export const getUsers = (options = {}) => {
 
   const query = queryString.stringify(finalOptions, {arrayFormat: 'comma' });
 
-  return fetch(`${config.BASE_URL}/?${query}`).then(res => res.json());
+  return fetch(`${config.BASE_URL}/?${query}`).then(res => res[finalOptions.format]());
 }
