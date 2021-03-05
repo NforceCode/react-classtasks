@@ -10,6 +10,7 @@ class AutoClicker extends Component {
       turnedOnForMs: 0,
     };
     this.intervalId = null;
+    this.startupTimeout = null;
   }
 
   handleChange = ({ target: { value } }) => {
@@ -50,7 +51,7 @@ class AutoClicker extends Component {
 
   componentDidMount () {
     this.toggleAutoClicker();
-    setTimeout(() => {
+    this.startupTimeout = setTimeout(() => {
       this.toggleAutoClicker();
     }, 31000);
   }
@@ -64,6 +65,7 @@ class AutoClicker extends Component {
 
   componentWillUnmount () {
     this.stopClicking();
+    clearTimeout(this.startupTimeout);
   }
 
   render () {
