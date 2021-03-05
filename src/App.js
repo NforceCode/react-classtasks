@@ -4,6 +4,7 @@ import PseudoChat from './pages/PseudoChat';
 import { ThemeContext } from './contexts';
 import Home from './pages/Home';
 import CONSTANTS from './constants';
+import UserList from 'components/UserListHooks';
 
 const {THEMES} = CONSTANTS;
 
@@ -14,7 +15,8 @@ const App = props => {
 
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
-      <Home />
+      {/* <Home /> */}
+      <UserList/>
     </ThemeContext.Provider>
   );
 };
