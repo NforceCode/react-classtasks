@@ -11,6 +11,7 @@ import SignUp from 'components/SignUp';
 import OffCanvasMenu from 'components/Menu/OffCanvasMenu';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Counter from 'components/Counter';
+import TodoApp from 'components/TodoApp';
 
 const { THEMES } = CONSTANTS;
 
@@ -36,6 +37,9 @@ const App = props => {
           </Route>
           <Route exact path='/404'>
             <div>This page has not been created yet. Return in one eternity</div>
+          </Route>
+          <Route path='/todo'>
+            <TodoApp />
           </Route>
         </Switch>
       </ThemeContext.Provider>

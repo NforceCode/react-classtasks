@@ -35,6 +35,9 @@ const OffCanvasMenu = () => {
             <Link to='/counter'>Counter</Link>
           </li>
           <li>
+            <Link to='/todo'>Todo</Link>
+          </li>
+          <li>
             <Link to='/404'>test3</Link>
           </li>
         </ul>
