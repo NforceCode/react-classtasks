@@ -26,7 +26,7 @@ const TaskCreator = props => {
         </Field>
       </div>
       <div className={styles.submitContainer}>
-        <input type='submit' className={styles.submit} />
+        <input type='submit' className={styles.submit} value='Add task'/>
       </div>
       <ErrorMessage name={name} component='div' className={styles.error} />
     </div>
