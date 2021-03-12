@@ -14,7 +14,7 @@ const taskData = [];
 const TodoApp = props => {
   const [tasks, setTasks] = useState(taskData);
 
-  const addTask = values => {
+  const addTask = (values, actions) => {
     const newTask = {
       text: values.text,
       id: Date.now(),
@@ -22,6 +22,7 @@ const TodoApp = props => {
     };
 
     setTasks([...tasks, newTask]);
+    actions.resetForm();
   };
   const toggleTaskCompletion = id => {
     const newTasks = tasks.map(task => {
