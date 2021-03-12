@@ -8,26 +8,41 @@ const Task = props => {
     toggleTaskCompletion,
     deleteTask,
   } = props;
-  const taskStyles = cx(styles.task,{
+
+  const containerStyles = cx(styles.container, {
+    [styles.completedContainer]: isCompleted,
+  });
+
+  const taskStyles = cx(styles.task, {
     [styles.completed]: isCompleted,
   });
   return (
-    <li className={styles.container}>
-      <input
-        onChange={() => {
-          toggleTaskCompletion(id);
-        }}
-        type='checkbox'
-      />
-      <p className={taskStyles}>{text} </p>
-      <input
-        type='button'
-        className={styles.deleteBtn}
-        onClick={() => {
-          deleteTask(id);
-        }}
-        value='x'
-      />
+    <li className={containerStyles}>
+      <div className={styles.taskContainer} onClick={() => {
+        toggleTaskCompletion(id);
+      }}>
+        {/* <div className={styles.controlsContainer}>
+          <input
+            // onChange={() => {
+            //   toggleTaskCompletion(id);
+            // }}
+            defaultChecked={isCompleted}
+            type='checkbox'
+          />
+        </div> */}
+
+        <p className={taskStyles}>{text}</p>
+      </div>
+      <div className={styles.controlsContainer}>
+        <input
+          type='button'
+          className={styles.deleteBtn}
+          onClick={() => {
+            deleteTask(id);
+          }}
+          value='Delete'
+        />
+      </div>
     </li>
   );
 };

@@ -5,10 +5,30 @@ import styles from './TaskCreator.module.scss';
 
 const TaskCreator = props => {
   const { name } = props;
+
   return (
     <div className={styles.container}>
-      <Field type='text' name={name} className={styles.input}/><input type='submit' className={styles.submit}/>
-      <ErrorMessage name={name} component='div' className={styles.error}/>
+      <div className={ styles.inputContainer}>
+        <Field name={name}>
+          {({ field, meta }) => {
+            const inputStyles = cx(styles.input, {
+              [styles.invalidInput]: meta.touched && meta.error,
+            });
+            return (
+              <input
+                type='text'
+                {...field}
+                name={name}
+                className={inputStyles}
+              />
+            );
+          }}
+        </Field>
+      </div>
+      <div className={styles.submitContainer}>
+        <input type='submit' className={styles.submit} />
+      </div>
+      <ErrorMessage name={name} component='div' className={styles.error} />
     </div>
   );
 };

@@ -48,7 +48,7 @@ const TodoApp = props => {
           <TaskCreator name='text' />
         </Form>
       </Formik>
-      <ul>
+      <ul className={styles.taskList}>
         {tasks.map(task => (
           <Task
             key={task.id}
