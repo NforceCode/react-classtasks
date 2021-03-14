@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { TODO_APP_SCHEMA } from 'utils/validationSchemas';
 import Task from './Task';
 import TaskCreator from './TaskCreator';
+import {useTodo} from 'hooks/index';
 import styles from './TodoApp.module.scss';
 
 const initialValues = {
@@ -12,31 +13,9 @@ const initialValues = {
 const taskData = [];
 
 const TodoApp = props => {
-  const [tasks, setTasks] = useState(taskData);
 
-  const addTask = (values, actions) => {
-    const newTask = {
-      text: values.text,
-      id: Date.now(),
-      isCompleted: false,
-    };
-
-    setTasks([...tasks, newTask]);
-    actions.resetForm();
-  };
-  const toggleTaskCompletion = id => {
-    const newTasks = tasks.map(task => {
-      if (task.id === id) {
-        task.isCompleted = !task.isCompleted;
-      }
-      return task;
-    });
-
-    setTasks(newTasks);
-  };
-  const deleteTask = id => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
+  const {tasks, addTask, deleteTask, toggleTaskCompletion} = useTodo(taskData);
+  
   return (
     <div className={styles.container}>
       <h2>Todo List</h2>
